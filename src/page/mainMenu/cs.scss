@@ -1,0 +1,67 @@
+$themes: (
+    highlight: (
+    background-color:#ff0000,
+    color: #23d017,
+    ),
+    dark: (
+        background-color:#00ff00,
+        color: white,
+        font-size:16px,
+    ),
+);
+
+$themesMap: (
+);
+
+@mixin useTheme() {
+    @each $theme-key, $theme-value in $themes {
+        $themesMap: $theme-value !global;
+
+        div[theme='#{$theme-key}'] & {
+            @content;
+
+        }
+
+    }
+
+}
+
+@function getVar($paramName) {
+    @return map-get($themesMap, $paramName);
+}
+
+.item {
+    font-size: 14px;
+    @include useTheme {
+        background-color: getVar('background-color');
+        color: getVar('color');
+    }
+}
+
+// 等效：
+
+// div[theme="highlight"] .item {
+//   color: rgb(35, 208, 23);
+//   background-color: yellow;
+// }
+
+// div[theme="dark"] .item {
+//   color: white;
+//   background-color: black;
+// }
+
+
+
+// $color: white;
+
+// @mixin colors($color: blue) {
+//     background-color: $color;
+//     @content;
+//     border-color: $color;
+// }
+
+// .colors {
+//     @include colors {
+//         color: $color;
+//     }
+// }

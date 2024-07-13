@@ -1,0 +1,62 @@
+
+p{
+  line-height: 1.625;
+  font-weight: 500;
+  font-family:PingFangSC-Medium, PingFangSC-Regular, PingFang SC, Microsoft YaHei,Arial,Helvetica,sans-serif,'宋体','黑体';
+}
+
+
+a{
+  font-size: 14px;
+  border-radius: 5%;
+  padding: .8rem 1.2rem;
+  border: 1px solid #1890ff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+
+
+
+.padding-aside{
+  padding: 0 .8rem;
+
+}
+/* 移动动画: 弹窗从右向左进入 */
+.moveR-enter-active,  .moveR-leave-active {
+    transition: all 0.3s linear;
+    transform: translateX(0);
+  }
+   .moveR-enter,  .moveR-leave {
+    transform: translateX(100%);
+  }
+   .moveR-leave-to{
+     transform: translateX(100%);
+   }
+
+   /* 移动动画:弹窗从左向右进入 */
+   .moveL-enter-active,
+   .moveL-leave-active {
+       transition: all 0.3s linear;
+       transform: translateX(0%);
+   }
+  .moveL-enter,
+  .moveL-leave {
+      transform: translateX(-100%);
+  }
+  .moveL-leave-to {
+      transform: translateX(-100%);
+  }
+   
+
+  /* 添加你的过渡动画样式，例如： */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .5s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}

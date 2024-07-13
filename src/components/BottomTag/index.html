@@ -1,0 +1,76 @@
+<!--
+ * @Date: 2024-07-05 08:24:56
+ * @LastEditors: likai 2806699104@qq.com
+ * @LastEditTime: 2024-07-05 08:49:56
+ * @FilePath: \Study-Vue3-Ts\src\components\BottomTag\index.html
+ * @Description: Do not edit
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+  .container {
+      height: 100vh;
+      /* overflow: auto; */
+    }
+
+  .first-div {
+      height: 5000px;
+      background-color: lightgray;
+    }
+
+  .second-div {
+      height: 5px;
+      background-color: blue;
+      overflow: hidden;
+      position: sticky;
+      bottom: 0;
+      transition: height 0.5s ease;
+    }
+    .height500{
+        height: 100px;
+    }
+    .heighr5{
+        height: 5px;
+    }
+
+  .second-div:hover {
+      height: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="first-div"></div>
+    <div class="second-div">
+      这里是第二个 div 的内容
+      
+    </div>
+  </div>
+
+  <script>
+    console.log('hello world');
+    
+    
+    const  firstDiv = document.querySelector(".first-div")
+    const   secondDiv= document.querySelector(".second-div")
+    console.log(window.innerHeight , window.pageYOffset,firstDiv.offsetHeight);
+    
+    // 当页面滚动到最底部时，恢复第二个 div 的高度
+    window.addEventListener('scroll', function () {
+      if ((window.innerHeight + window.pageYOffset) >= firstDiv.offsetHeight) {
+        // document.querySelector('.second-div').style.height = '100px';
+        secondDiv.classList.add('height500')
+        secondDiv.classList.remove('height5')
+      } else {
+        secondDiv.classList.add('height5')
+        secondDiv.classList.remove('height500')
+        // document.querySelector('.second-div').style.height = '5px';
+      }
+    });
+  </script>
+</body>
+
+</html>

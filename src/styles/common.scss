@@ -1,0 +1,237 @@
+html,
+body,
+#app,
+#my-app {
+   height: 100%;
+   overflow: hidden;
+}
+
+body {
+   background-color: #f7f9fa;
+   -webkit-font-smoothing: antialiased;
+   // Prevent font enlargement in horizontal screen
+   text-size-adjust: 100%;
+
+   font-family: sans-serif, Roboto, sans-serif-medium, Arial;
+   font-feature-settings: normal;
+   color: $main-text-color;
+   // font-size: 14px;
+
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+
+   ::-webkit-scrollbar {
+      width: 4px;
+      height: 8px;
+      background: transparent;
+   }
+
+   ::-webkit-scrollbar-thumb {
+      border-radius: 4px;
+      border: none;
+      background: rgba(89, 89, 89, 0.6);
+   }
+}
+
+.over-hide {
+   overflow: hidden;
+}
+
+.over-auto {
+   overflow: auto
+}
+
+.overy-auto {
+   overflow: hidden;
+   overflow-y: auto
+}
+.btn{
+   cursor: pointer;
+}
+
+@mixin hover-color($color: #40a9ff) {
+   cursor: pointer;
+   transition: color 0.3s;
+   color:#1890ff;
+   &:hover {
+     color: $color;
+   }
+ }
+ 
+
+.pointer {
+   cursor: pointer;
+   transition: color 0.3s;
+
+}
+.hover-color{
+   @include hover-color(#40a9ff); 
+}
+
+
+// 滚动条隐藏 添加 demo
+.demo::-webkit-scrollbar {
+   display: none;
+   /* Chrome Safari */
+}
+
+.demo {
+   scrollbar-width: none;
+   /* firefox */
+   -ms-overflow-style: none;
+   /* IE 10+ */
+   overflow-x: hidden;
+   overflow-y: auto;
+   scroll-snap-type: y mandatory;
+
+   &>div {
+      scroll-snap-align: start;
+   }
+}
+
+.box-shadow {
+   box-shadow: 0px 0px 10px 1px #eeece1
+}
+
+::v-deep(.ant-spin-nested-loading) {
+   // height: calc(100% - 60px);
+   flex: 1;
+   overflow: hidden;
+}
+
+::v-deep(.ant-spin-nested-loading .ant-spin-container) {
+   height: 100%;
+}
+
+//#region
+
+.panel {
+   position: relative;
+   border: 1px solid rgba(25, 186, 139, 0.17);
+   padding: 0 0.1875rem 0.5rem;
+   transition: all .8s;
+   // cursor: pointer
+}
+
+// 悬浮前 0 
+.panel::before {
+   position: absolute;
+   top: 0;
+   left: 0;
+   content: "";
+   width: 18px;
+   height: 18px;
+   border-top: 2px solid #02a6b5;
+   border-left: 2px solid #02a6b5;
+   z-index: 9;
+   transition: all .5s
+}
+
+.panel::after {
+   position: absolute;
+   top: 0;
+   right: 0;
+   content: "";
+   width: 18px;
+   height: 18px;
+   border-top: 2px solid #02a6b5;
+   border-right: 2px solid #02a6b5;
+   z-index: 9;
+   transition: all .5s
+}
+
+.panel .panel-footer {
+   position: absolute;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+}
+
+// 悬浮前 0 
+.panel .panel-footer::before {
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   content: "";
+   width: 18px;
+   height: 18px;
+   border-bottom: 2px solid #02a6b5;
+   border-left: 2px solid #02a6b5;
+   transition: all .5s
+}
+
+.panel .panel-footer::after {
+   position: absolute;
+   bottom: 0;
+   right: 0;
+   content: "";
+   width: 18px;
+   height: 18px;
+   border-bottom: 2px solid #02a6b5;
+   border-right: 2px solid #02a6b5;
+   transition: all .5s
+}
+
+//鼠标悬停
+.panel:hover .panel-footer::before {
+   width: 100%;
+   height: 100%;
+}
+
+.panel:hover .panel-footer::after {
+   width: 0px;
+   height: 36px;
+}
+
+//鼠标悬停
+.panel:hover::after {
+   width: 100%;
+   height: 0px;
+}
+
+.panel:hover::before {
+   width: 0px;
+   height: 36px;
+}
+
+//鼠标悬停
+.panel:hover {
+   box-shadow: -5px 0 2px rgba(255, 255, 255, .1), 0 -5px 2px rgba(255, 255, 255, .1), 5px 0 2px rgba(255, 255, 255, .1), 0 5px 2px rgba(255, 255, 255, .1);
+   background: rgba(255, 255, 255, .1);
+}
+
+//#endregion
+//
+
+// padding 
+// #region
+
+.pad-10 {
+   padding: 10px;
+}
+
+// #endregion
+// 
+.cursor-tip-class {
+   position: fixed;
+   height: 30px;
+   line-height: 30px;
+   padding-left: 10px;
+   padding-right: 20px;
+   background-color: #FFFFFF;
+   color: #000000;
+   border-radius: 4px;
+   pointer-events: none;
+   z-index: 9;
+   min-width: 150px;
+   font-size: 12px;
+   transition: opacity 0.5s ease;
+}
+
+:deep(div#__vconsole) {
+   display: none;
+   &.show {
+       display: block;
+   }
+}
+

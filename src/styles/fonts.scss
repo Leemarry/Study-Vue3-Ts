@@ -1,0 +1,125 @@
+$font-family-sans-serif: 'Open Sans',
+BlinkMacSystemFont,
+'Segoe UI',
+Roboto,
+'Helvetica Neue',
+Helvetica,
+'PingFang SC',
+'Hiragino Sans GB',
+'Microsoft YaHei',
+SimSun,
+sans-serif;
+
+$line-heights: (12: 20px,
+  14: 22px,
+  16: 24px,
+  18: 26px);
+
+// 用法: @include text(12)
+@mixin text($size) {
+  font-size: #{$size}px;
+  line-height: map-get($line-heights, $size);
+}
+
+// 常规体
+@mixin text-regular {
+  font-weight: 400;
+}
+
+// 中粗体
+@mixin text-semibold {
+  font-weight: 600;
+}
+
+@mixin ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fw-6 {
+  font-weight: 600;
+}
+
+.fz10 {
+  font-size: 10px;
+}
+
+.fz12 {
+  font-size: 12px;
+}
+
+.fz14 {
+  font-size: 14px;
+}
+
+.fz16 {
+  font-size: 16px;
+}
+
+.fz18 {
+  font-size: 18px;
+}
+
+.fz20 {
+  font-size: 20px;
+}
+
+.fz22 {
+  font-size: 22px;
+}
+
+.fz24 {
+  font-size: 24px;
+}
+
+.fz26 {
+  font-size: 26px;
+}
+
+.fz28 {
+  font-size: 28px;
+}
+
+.fz30 {
+  font-size: 30px;
+}
+
+.fz32 {
+  font-size: 32px;
+}
+
+.fz35 {
+  font-size: 35px;
+}
+
+.fz-2rem{
+  font-size: 2rem;
+}
+.fz-3rem{
+  font-size: 3rem;
+}
+.fz-4rem{
+  font-size: 4rem;
+}
+.text-center {
+  text-align: center
+}
+
+.white-space-nowrap {
+  white-space: nowrap;
+}
+
+.text-hide {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+@font-face {  
+  font-family: 'MaoKenWangXingYuan'; /* 自定义字体名称 */  
+  src: url('../assets/font/MaoKenWangXingYuan/MaoKenWangXingYuan-2.ttf') format('truetype');; /* 指定字体文件路径和格式 */  
+      //  url('fonts/myfont.woff') format('woff'); /* 可以指定多个字体文件以兼容不同浏览器 */  
+  font-weight: normal; /* 字体粗细 */  
+  font-style: normal; /* 字体风格，如italic为斜体 */  
+} 

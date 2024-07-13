@@ -1,0 +1,48 @@
+$themes: (  
+    highlight: (  
+        backgroundcolor: #ff0000,  
+        textcolor: #23d017,  
+    ),  
+    dark: (  
+        backgroundcolor: #00ff00,  
+        textcolor: white,  
+        fontsize: 16px  
+        
+    ),  
+    // ... 可以继续添加其他theme  
+);  
+  
+@mixin useTheme($theme-key) {  
+    @if map-has-key($themes, $theme-key) {  
+        $theme-value: map-get($themes, $theme-key);  
+  
+        div[theme='#{$theme-key}'] & {  
+            background-color: map-get($theme-value, 'backgroundcolor');  
+            color: map-get($theme-value, 'textcolor');  
+  
+            // 对于非颜色属性，我们可能需要特殊处理  
+            @if map-has-key($theme-value, 'fontsize') {  
+                font-size: map-get($theme-value, 'fontsize');  
+            }  
+  
+            // 允许传递额外的样式内容  
+            @content;  
+        }  
+    } @else {  
+        @warn "Theme #{$theme-key} not found in $themes map.";  
+    }  
+}  
+  
+.item {  
+    font-size: 14px; // 默认的字体大小  
+  
+    // 为 'highlight' 主题应用样式  
+    @include useTheme('highlight') {  
+        // 这里可以添加针对 'highlight' 主题的额外样式  
+    };  
+  
+    // 为 'dark' 主题应用样式（注意使用分号结束每个 @include）  
+    @include useTheme('dark') {  
+        // 这里可以添加针对 'dark' 主题的额外样式  
+    };  
+}

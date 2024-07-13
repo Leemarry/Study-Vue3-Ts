@@ -1,0 +1,70 @@
+$themes: (
+    highlight: (
+    background-color:#ff0000,
+    color: #23d017,
+    ),
+    dark: (
+        background-color:#00ff00,
+        color: white,
+        font-size:16px,
+        // 每一个主题内容不确定有哪些属性
+
+    ),
+    // ... 可以继续添加其他theme   可能有许多个主题
+);
+
+$themesMap: (
+);
+
+@mixin useTheme() {
+    @each $theme-key, $theme-value in $themes {
+        $themesMap: $theme-value !global;
+
+        div[theme='#{$theme-key}'] & {
+            @content;
+
+        }
+
+    }
+
+}
+
+@function getVar($paramName) {
+    @return map-get($themesMap, $paramName);
+}
+
+.item {
+    font-size: 14px;
+
+    @include useTheme {
+        background-color: getVar('background-color');
+        color: getVar('color');
+    }
+
+}
+
+// div[theme="highlight"] .item {
+//   color: rgb(35, 208, 23);
+//   background-color: yellow;
+// }
+
+// div[theme="dark"] .item {
+//   color: white;
+//   background-color: black;
+// }
+
+
+
+// $color: white;
+
+// @mixin colors($color: blue) {
+//     background-color: $color;
+//     @content;
+//     border-color: $color;
+// }
+
+// .colors {
+//     @include colors {
+//         color: $color;
+//     }
+// }

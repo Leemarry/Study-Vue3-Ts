@@ -1,0 +1,41 @@
+$themes: (  
+    highlight: (  
+        background-color: #ff0000,  
+        color: #23d017,  
+    ),  
+    dark: (  
+        background-color: #00ff00,  
+        color: white,  
+        font-size: 16px,  
+        font-weight: bold,  
+    
+    ),  
+    Custom: (  
+        background-color: #0000ff,  
+        color: #fff,  
+        // 自定义主题 主题字体颜色为 前面一个主题的主题字体颜色 背景颜色为 默认为前一个主题的背景颜色  用户在  <input type="color"> 获取一个后修改主题的背景颜色
+        font-size: 16px,  
+        font-weight: bold,  
+    ),
+
+    // ... 可以继续添加其他theme  
+);  
+
+  
+@mixin useTheme() {  
+    @each $theme-key, $theme-map in $themes {  
+        html[theme='#{$theme-key}'] & {  
+            @each $property, $value in $theme-map {  
+                #{$property}: $value;  
+            }  
+        }  
+    }  
+}  
+  
+.item {  
+    font-size: 14px;  
+  
+    @include useTheme;  
+}
+// 开始默认为highlight 当 用户在 <input type="color"> 获取一个后修改主题的背景颜色 要求修改自定义Custom的背景颜色 并且 将自定义主题设置为当前主题
+// 自定义主题 主题字体颜色为 前面一个主题的主题字体颜色  

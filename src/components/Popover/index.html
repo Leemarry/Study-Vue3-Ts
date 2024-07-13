@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div class="con">
+      <button>oooo</button>
+      <div class="panle" style="--arrow: 8">
+        <button onclick="opentooltip()">点击显示</button>
+        <div class="tooltip" placement="rightBottom">
+          <div class="tooltip-content">这里是弹窗的内容</div>
+          <div class="tooltip-arrow"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<style>
+  .button {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(45deg, red 50%, transparent 50%);
+    transform: rotate(45deg);
+    box-shadow: -2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+    /* 添加以下滤镜代码来模拟 box-shadow 效果 */
+    /* filter: drop-shadow(-2px 2px 3px  rgba(0, 0, 0, .1));  */
+  }
+  .con {
+    position: relative;
+  }
+
+  .panle {
+   position: absolute;
+    display: inline-block;
+  }
+
+  button {
+    flex: 1;
+  }
+
+  .tooltip {
+    /* display: none; */
+    position: absolute;
+  }
+
+  .tooltip[placement='rightBottom'] {
+    left: calc(100% - var(--arrow) * 2 * 1px);
+    top: calc(100% + var(--arrow) * 2 * 1px);
+  }
+
+  .tooltip[placement='rightBottom'] .tooltip-arrow {
+    transform: rotate(135deg) translateX(-50%);
+    box-shadow: -2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+    top: calc(0%);
+    left: calc(0% + var(--arrow) * 1px);
+  }
+
+  .tooltip[placement='rightTop'] {
+    left: calc(100% - 10px);
+    bottom: calc(100% + 10px);
+  }
+
+  .tooltip[placement='rightTop'] .tooltip-arrow {
+    transform: rotate(-45deg) translateX(-50%);
+    box-shadow: -2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+    bottom: calc(0%);
+    left: calc(0% + var(--arrow) * 1px);
+  }
+
+  .tooltip[placement='rightCenter'] {
+    left: calc(100% + 10px);
+    transform: translateY(-50%);
+    top: 50%;
+  }
+
+  .tooltip[placement='rightCenter'] .tooltip-arrow {
+    transform: rotate(45deg) translateX(0%) translateY(50%);
+    box-shadow: -2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+    bottom: calc(50%);
+    left: calc(0%);
+  }
+
+  .tooltip[placement='leftTop'] {
+    right: calc(100% - 10px);
+    bottom: calc(100% + 10px);
+    /* transform: translateX(-50%);  */
+  }
+
+  .tooltip[placement='leftTop'] .tooltip-arrow {
+    transform: rotate(-45deg) translateY(50%) ;
+    box-shadow: -2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+    bottom: calc(0%);
+    right: calc(0% + var(--arrow) * 1px);
+  }
+
+  .tooltip[placement='leftBottom'] {
+    right: calc(100% - 10px);
+    top: calc(100% + 10px);
+  }
+
+  .tooltip[placement='leftBottom'] .tooltip-arrow {
+    transform: rotate(135deg) translateY(50%) ;
+    box-shadow: -2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+    bottom: calc(100% - var(--arrow)  * 1px);
+    right: calc(0%);
+  }
+
+  .tooltip[placement='leftCenter'] {
+    right: calc(100% + 10px);
+    top: calc(50%);
+    transform: translateY(-50%);
+  }
+
+  .tooltip[placement='leftCenter'] .tooltip-arrow {
+    transform: rotate(-135deg) translateX(-50%) ;
+    box-shadow: -2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+    bottom: calc(50%);
+    right: calc(0%);
+  }
+
+
+  .tooltip[placement='centerTop'] {
+    bottom: calc(100% + 10px);
+    transform: translateX(-50%);
+    left: calc(50%);
+  }
+
+  .tooltip[placement='centerTop'] .tooltip-arrow {
+    transform: rotate(-45deg) translateX(-50%) ;
+    box-shadow: -2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+    bottom: calc(0%);
+    right: calc(50%);
+  }
+
+  .tooltip[placement='centerBottom'] {
+    left: calc(50%);
+    transform: translateX(-50%);
+    top: calc(100% + 10px);
+  }
+  .tooltip[placement='centerBottom'] .tooltip-arrow {
+    transform: rotate(135deg) translateX(-50%) ;
+    box-shadow: -2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+    bottom: calc(100% - var(--arrow) * 1px);
+    right: calc(50%);
+  }
+
+
+  .tooltip-content {
+    width: 400px;
+    /* 根据需要调整宽度 */
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    height: 50px;
+    z-index: 100;
+  }
+
+  .tooltip-arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    width: calc(var(--arrow) * 1px); /* 使用calc()和变量 */
+    height: calc(var(--arrow) * 1px); /* 同样设置高度 */
+    background: linear-gradient(45deg, red 50%, transparent 50%);
+  }
+
+  /* .tooltip-arrow {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background-color: #f9f9f9;
+        bottom: 100%;
+        left: 50%;
+        border-left: 1px solid #ddd;    
+        border-top: 1px solid #ddd;   
+        box-shadow: -1px -1px 3px 0px rgba(0, 0, 0, .1);
+        transform: translateX(-50%) rotate(45deg) translateY(50%);
+        z-index: 1000;
+    } */
+</style>
+
+<script>
+  function opentooltip() {
+    // tooltip 显示
+    document.querySelector('.tooltip').style.display = 'block';
+  }
+</script>

@@ -1,7 +1,7 @@
 <!--
  * @Date: 2024-06-26 18:19:07
  * @LastEditors: likai 2806699104@qq.com
- * @LastEditTime: 2024-07-13 10:12:12
+ * @LastEditTime: 2024-07-13 10:46:25
  * @FilePath: \Study-Vue3-Ts\src\views\Main-Page\index.vue
  * @Description: 
 -->
@@ -50,8 +50,7 @@
 
         <div class="solt-panel">   
           <li>1</li>  
-          <li>2</li>  
-          <li>36</li>  
+
         </div>  
 
     </AlPopover> 

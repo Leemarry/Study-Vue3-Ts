@@ -1,15 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-
-    <div >
-
-    </div>
-    
-</body>
+<!--
+ * @Author: likai 2806699104@qq.com
+ * @Date: 2024-07-06 09:56:21
+ * @LastEditors: likai 2806699104@qq.com
+ * @LastEditTime: 2024-07-14 15:33:00
+ * @FilePath: \Study-Vue3-Ts\src\components\AceShi\html\index.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>动态加载图像示例</title>  
+</head>  
+<body>  
+  
+    <div id="scrollable-container" style="width: 100%; height: 300px; overflow-y: auto;">  
+        <div id="content" style="height: 5000px;">  
+          <!-- 这里是内容，高度足够大以产生滚动条 -->  
+        </div>  
+      </div>  
+        
+      <div id="scroll-position">滚动位置: 0</div>
+  
+<script >
+document.addEventListener('DOMContentLoaded', function() {  
+  const scrollableContainer = document.getElementById('scrollable-container');  
+  const content = document.getElementById('content');  
+  const scrollPositionDisplay = document.getElementById('scroll-position');  
+  
+  scrollableContainer.addEventListener('scroll', function() {  
+    // 计算滚动比例  
+    const scrollTop = scrollableContainer.scrollTop; // 当前滚动条的位置  
+    const scrollHeight = scrollableContainer.scrollHeight; // 滚动条的总高度  
+    const clientHeight = scrollableContainer.clientHeight; // 容器视口的高度  
+    const scrollRatio = scrollTop / (scrollHeight - clientHeight);  
+  
+    console.log('scrollTop:', scrollTop, 'scrollHeight:', scrollHeight, 'clientHeight:', clientHeight, 'scrollRatio:', scrollRatio);
+    // 限制滚动比例在0到1之间  
+    const clampedScrollRatio = Math.min(Math.max(scrollRatio, 0), 1);  
+  
+    // 更新显示  
+    scrollPositionDisplay.textContent = `滚动位置: ${clampedScrollRatio.toFixed(2)}`;  
+  });  
+});
+</script>  
+</body>  
 </html>

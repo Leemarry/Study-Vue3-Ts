@@ -14,7 +14,7 @@ export const mainVue = import.meta.glob(['../views/Main-Page/**/*.vue'],{
   eager: true,
   import: 'default'
 }) 
-console.log('mainVue',mainVue);
+// console.log('mainVue',mainVue);
 
 export const mainPages=  import.meta.glob(['../views/Main-Page/**/*.ts'],{
   eager: true,

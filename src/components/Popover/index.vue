@@ -2,16 +2,18 @@
  * @Author: likai 2806699104@qq.com
  * @Date: 2024-07-07 16:10:14
  * @LastEditors: likai 2806699104@qq.com
- * @LastEditTime: 2024-07-12 14:00:55
+ * @LastEditTime: 2024-07-13 20:13:15
  * @FilePath: \Study-Vue3-Ts\src\components\Popover\index.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <template>
   <div class="al-popover" style="--arrow: 8">
     <!-- 卡片内容 -->
-    <slot class='al-popover-content' name="content"></slot>
+     <div  class='al-popover-content'  @click="openTooltip()">
+      <slot name="content"></slot>
+     </div>
     <!-- 默认内容插槽 -->
-    <div class="al-popover-tooltip" :placement="placement" :style="{ 'min-width': minwidth + 'px' }">
+    <div class="al-popover-tooltip" :placement="placement" :style="{ 'min-width': minWidth + 'px' }" v-if="isVisible">
       <div class='al-tooltip-content'>
         <div v-if="title" class="al-popover-title">
           {{ title }}
@@ -37,7 +39,7 @@ const props = defineProps({
     type: String,
     default: ''
   },
-  minwidth: {
+  minWidth: {
     type: Number,
     default: 200
   },
@@ -46,6 +48,10 @@ const props = defineProps({
     default: 'centerBottom'
   }
 })
+const isVisible = ref(false)
+const openTooltip = () => {
+  isVisible.value =  !isVisible.value
+}
 </script>
 <script lang='ts'>
 export default {
@@ -58,9 +64,13 @@ export default {
   position: relative;
   display: inline-block;
 }
+.al-popover .al-popover-content{
+  display: inline-block;
+}
 
 .al-popover .al-popover-tooltip {
   position: absolute;
+  filter: drop-shadow( 0 1px 3px rgba(0, 3, 3, .1));
 }
 
 .al-popover .al-popover-tooltip .al-tooltip-content {
@@ -69,7 +79,8 @@ export default {
   background-color: #f9f9f9;
   border: 1px solid #ddd;
   border-radius: 4px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  // box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
 }
 
 .al-popover .al-popover-tooltip .al-popover-title {
@@ -80,7 +91,7 @@ export default {
 
 // 内容样式
 .al-popover .al-popover-tooltip .al-popover-solt {
-  display: inline-block;
+  // display: inline-block; // 没有用
 }
 
 .al-popover .al-popover-tooltip .al-tooltip-arrow {
@@ -90,6 +101,7 @@ export default {
   width: calc(var(--arrow) * 1px);
   /* 使用calc()和变量 */
   height: calc(var(--arrow) * 1px);
+  // box-shadow: -2px 2px 2px 0px rgba(0, 0, 0, 0.2);
   /* 同样设置高度 */
   background: linear-gradient(45deg, #f9f9f9 50%, transparent 50%);
 }
@@ -101,7 +113,6 @@ export default {
 
 .al-popover .al-popover-tooltip[placement='rightBottom'] .al-tooltip-arrow {
   transform: rotate(135deg) translateX(-50%);
-  box-shadow: -2px 2px 2px 0px rgba(0, 0, 0, 0.2);
   top: calc(0%);
   left: calc(0% + var(--arrow) * 1px);
 }
@@ -113,7 +124,6 @@ export default {
 
 .al-popover .al-popover-tooltip[placement='rightTop'] .al-tooltip-arrow {
   transform: rotate(-45deg) translateX(-50%);
-  box-shadow: -2px 2px 2px 0px rgba(0, 0, 0, 0.2);
   bottom: calc(0%);
   left: calc(0% + var(--arrow) * 1px);
 }
@@ -126,7 +136,6 @@ export default {
 
 .al-popover .al-popover-tooltip[placement='rightCenter'] .al-tooltip-arrow {
   transform: rotate(45deg) translateX(0%) translateY(50%);
-  box-shadow: -2px 2px 2px 0px rgba(0, 0, 0, 0.2);
   bottom: calc(50%);
   left: calc(0%);
 }
@@ -138,7 +147,6 @@ export default {
 
 .al-popover .al-popover-tooltip[placement='leftTop'] .al-tooltip-arrow {
   transform: rotate(-45deg) translateY(50%);
-  box-shadow: -2px 2px 2px 0px rgba(0, 0, 0, 0.2);
   bottom: calc(0%);
   right: calc(0% + var(--arrow) * 1.5px);
 }
@@ -149,7 +157,6 @@ export default {
 
 .al-popover .al-popover-tooltip[placement='leftBottom'] .al-tooltip-arrow {
   transform: rotate(135deg) translateY(50%) ;
-    box-shadow: -2px 2px 2px 0px rgba(0, 0, 0, 0.2);
     bottom: calc(100% - var(--arrow)  * 1px);
     right: calc(0% + var(--arrow) * 1px);
 }
@@ -161,7 +168,6 @@ export default {
 
 .al-popover .al-popover-tooltip[placement='leftCenter'] .al-tooltip-arrow {
   transform: rotate(-135deg) translateX(-50%) ;
-    box-shadow: -2px 2px 2px 0px rgba(0, 0, 0, 0.2);
     bottom: calc(50%);
     right: calc(0%);
 }
@@ -174,7 +180,6 @@ export default {
 
 .al-popover .al-popover-tooltip[placement='centerTop'] .al-tooltip-arrow {
   transform: rotate(-45deg) translateX(-50%) ;
-    box-shadow: -2px 2px 2px 0px rgba(0, 0, 0, 0.2);
     bottom: calc(0%);
     right: calc(50%);
 }
@@ -187,7 +192,6 @@ export default {
 
 .al-popover .al-popover-tooltip[placement='centerBottom'] .al-tooltip-arrow {
   transform: rotate(135deg) translateX(-50%) ;
-    box-shadow: -2px 2px 2px 0px rgba(0, 0, 0, 0.2);
     bottom: calc(100% - var(--arrow) * 1px);
     right: calc(50%);
 }

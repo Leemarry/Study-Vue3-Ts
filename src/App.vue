@@ -1,10 +1,30 @@
 <!--
  * @Date: 2024-06-26 18:05:42
  * @LastEditors: likai 2806699104@qq.com
- * @LastEditTime: 2024-07-07 11:55:58
+ * @LastEditTime: 2024-07-14 15:35:39
  * @FilePath: \Study-Vue3-Ts\src\App.vue
  * @Description: Do not edit
 -->
+
+<template>
+  <div class='demo-app container'>
+    <div class="top-div ">
+      <TopTag class="top-tag invert-theme" />
+      <TopNav class="current-theme top-nav" />
+    </div>
+    <div class="main-container current-theme   main-div" id="outer">
+      <!-- 路由 -->
+      <RouterView v-slot='{ Component }' class='路由组件 占满 component-container ' id="inner" >
+        <transition name='fade'>
+          <KeepAlive>
+            <component :is="Component"></component>
+          </KeepAlive>
+        </transition>
+      </RouterView>
+    </div>
+    <BottomTag class="bottom-tag bottom-div" />
+  </div>
+</template>
 <script setup lang="ts">
 // import HomeMenu from './page/mainMenu/HomeMenu.vue'
 import HomeMenu from '@/page/mainMenu/HomeMenu.vue'
@@ -16,28 +36,15 @@ import { MyRouteRecord } from "@/router/routesType";
 import TopTag from '@/components/TopTag/index.vue'
 import TopNav from '@/components/TopNav/index.vue'
 import BottomTag from '@/components/BottomTag/index.vue'
+import { ref, reactive, PropType, onMounted, computed } from "vue"
+
+onMounted(() => {
+ 
+});
+  
+
 
 </script>
-
-<template>
-  <div class='demo-app container'>
-    <div class="top-div ">
-      <TopTag class="top-tag invert-theme" />
-      <TopNav class="top-nav crrent-theme " />
-    </div>
-    <div class="main-container   main-div">
-      <!-- 路由 -->
-      <RouterView v-slot='{ Component }' class='路由组件 占满 component-container'>
-        <transition name='fade'>
-          <KeepAlive>
-            <component :is="Component"></component>
-          </KeepAlive>
-        </transition>
-      </RouterView>
-    </div>
-    <BottomTag class="bottom-tag bottom-div" />
-  </div>
-</template>
 
 <style lang="scss" scoped>
 .demo-app {
@@ -52,11 +59,35 @@ import BottomTag from '@/components/BottomTag/index.vue'
 }
 
 .main-container {
+  border-top: 2px solid yellowgreen;
+  // 
+  overflow: auto;
   flex: 1;
   .component-container {
     // position: absolute;
     // inset: 0;
     height: 100%;
+  }
+  position: relative;
+}
+.main-container::before{
+  content: '';
+  background-color: yellowgreen;
+  height: 2px;
+  position: absolute;
+  width: 100%;
+  top:0px;
+  animation: scale 3s  linear; //infinite
+  animation-timeline: scroll(root);
+  transform-origin: 0% 50%;
+}
+
+@keyframes scale {
+  0%{
+    transform: scaleX(0);
+  }
+  100%{
+    transform: scaleX(1);
   }
 }
 
@@ -84,6 +115,7 @@ import BottomTag from '@/components/BottomTag/index.vue'
 .top-nav{
   height: 3.6rem;
   min-height: 56px;
+  border: none;
   // background-color:  $ic-selected;//var(--topbar-sticky-background);
 }
 

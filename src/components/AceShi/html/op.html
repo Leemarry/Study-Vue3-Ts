@@ -1,61 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>6666</title>
-  <style>
-    #scrollable-container {
-      width: 100%;
-      height: 300px;
-      overflow-y: auto;
-      position: relative;
-      --progressbar: 0.2;
-    }
-
-    #scrollable-container::before {
-      content: '';
-      background-color: yellowgreen;
-      height: 2px;
-      position: absolute;
-      width: 100%;
-      top: 0;
-      left: 0;
-      z-index: 1;
-      transform-origin: 0% 50%;
-      transform: scaleX(var(--progressbar));
-    }
-  </style>
+  <title>Document</title>
 </head>
-
 <body>
-  <div>
-    <div>ssssssssss</div>
-    <div id="scrollable-container">
-      <!-- 这里是内容，高度足够大以产生滚动条 -->
-      <div style="height: 5000px;"></div>
-    </div>
-  </div>
-
-
+  
 </body>
-
 </html>
-
 <script>
-    const scrollableContainer = document.getElementById('scrollable-container');
-    scrollableContainer.addEventListener('scroll', function () {
-      // 计算滚动比例
-      const scrollTop = scrollableContainer.scrollTop; // 当前滚动条的位置
-      const scrollHeight = scrollableContainer.scrollHeight; // 滚动条的总高度
-      const clientHeight = scrollableContainer.clientHeight; // 容器视口的高度
-      const scrollRatio = scrollTop / (scrollHeight - clientHeight);
-
-      console.log('scrollTop:', scrollTop,'scrollHeight:', scrollHeight, 'clientHeight:', clientHeight,'scrollRatio:', scrollRatio);
-      // 限制滚动比例在0到1之间
-      const clampedScrollRatio = Math.min(Math.max(scrollRatio, 0), 1);
-
-      scrollableContainer.style.setProperty('--progressbar', clampedScrollRatio.toString());
-    });
-  </script>
+  // 定义一个函数来打开或创建数据库  
+function openDB() {  
+    return new Promise((resolve, reject) => {  
+        const request = indexedDB.open('MyNotesDB', 1); // 数据库名为'MyNotesDB'，版本为1  
+  
+        request.onerror = (event) => {  
+            console.error('Database error: ' + event.target.errorCode);  
+            reject(event.target.errorCode);  
+        };  
+  
+        request.onsuccess = (event) => {  
+            console.log('Database successfully opened or created.');  
+            resolve(event.target.result);  
+        };  
+  
+        // 处理数据库版本变更（例如，创建或修改对象存储）  
+        request.onupgradeneeded = (event) => {  
+            const db = event.target.result;  
+            // 创建一个名为'notes'的对象存储（如果尚不存在）  
+            if (!db.objectStoreNames.contains('notes')) {  
+                db.createObjectStore('notes', { keyPath: 'id', autoIncrement: true });  
+            }  
+        };  
+    });  
+}  
+  
+// 定义一个函数来添加笔记  
+function addNote(db, note) {  
+    return new Promise((resolve, reject) => {  
+        const transaction = db.transaction(['notes'], 'readwrite');  
+        const objectStore = transaction.objectStore('notes');  
+  
+        const request = objectStore.add(note);  
+  
+        request.onsuccess = (event) => {  
+            console.log('Note added successfully.');  
+            resolve(event.target.result);  
+        };  
+  
+        request.onerror = (event) => {  
+            console.error('Error adding note: ' + event.target.errorCode);  
+            reject(event.target.errorCode);  
+        };  
+    });  
+}  
+  
+// 定义一个函数来获取所有笔记  
+function getAllNotes(db) {  
+    return new Promise((resolve, reject) => {  
+        const transaction = db.transaction(['notes'], 'readonly');  
+        const objectStore = transaction.objectStore('notes');  
+  
+        const request = objectStore.getAll();  
+  
+        request.onsuccess = (event) => {  
+            console.log('All notes retrieved successfully.');  
+            resolve(event.target.result);  
+        };  
+  
+        request.onerror = (event) => {  
+            console.error('Error retrieving notes: ' + event.target.errorCode);  
+            reject(event.target.errorCode);  
+        };  
+    });  
+}  
+  
+// 使用示例  
+openDB().then(db => {  
+    // 添加一个笔记  
+    // addNote(db, { title: 'First Note', content: 'This is my first note.' }).then(id => {  
+    //     console.log('Note added with ID:', id);  
+  
+    //     // 获取所有笔记  
+    //     getAllNotes(db).then(notes => {  
+    //         console.log('All notes:', notes);  
+    //     }).catch(error => {  
+    //         console.error('Failed to retrieve notes:', error);  
+    //     });  
+    // }).catch(error => {  
+    //     console.error('Failed to open or create database:', error);  
+    // });  
+}).catch(error => {  
+    console.error('Failed to open or create database:', error);  
+});
+</script>

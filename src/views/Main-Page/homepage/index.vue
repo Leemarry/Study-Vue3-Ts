@@ -1,7 +1,7 @@
 <!--
  * @Date: 2024-06-26 18:19:07
  * @LastEditors: likai 2806699104@qq.com
- * @LastEditTime: 2024-07-14 16:30:39
+ * @LastEditTime: 2024-07-14 20:41:17
  * @FilePath: \Study-Vue3-Ts\src\views\Main-Page\homepage\index.vue
  * @Description: 
 -->
@@ -35,6 +35,9 @@
 import { computed, onMounted, ref, nextTick } from 'vue'
 import { useDefer } from '@/utils/loading/userDefer'
 import AlVirtualList from '@/components/Al-Virtual-Scroller/index.vue'
+defineOptions({
+  name: 'HomePage'
+})
 const items = ref(Array.from({ length: 1000 }, (_, index) => ({
   id: index,
   text: `Item ${index + 1}`,

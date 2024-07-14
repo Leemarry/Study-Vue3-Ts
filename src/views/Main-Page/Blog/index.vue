@@ -1,7 +1,7 @@
 <!--
  * @Date: 2024-06-26 18:19:07
  * @LastEditors: likai 2806699104@qq.com
- * @LastEditTime: 2024-07-13 23:54:17
+ * @LastEditTime: 2024-07-14 20:50:01
  * @FilePath: \Study-Vue3-Ts\src\views\Main-Page\Blog\index.vue
  * @Description: 
 -->
@@ -16,7 +16,8 @@
   <button @click='goBlog'>前往博客</button>
 
   <div class="Al-Image">
-    <img src="https://s4.aconvert.com/convert/p3r68-cdx67/twsex-tln3l.jpg" alt="" srcset="" class="All-Image Small-Image">
+    <img src="http://pic.bizhi360.com/litimg/11676.jpg" alt="" srcset="" class="All-Image Small-Image">
+    <img src="http://pic.bizhi360.com/litimg/11676.jpg" alt="" srcset="" class="All-Image Small-Image">
     <img @load="handleLoaded" src="https://s4.aconvert.com/convert/p3r68-cdx67/tf9py-uy0mo.jpg" alt="" srcset="" class="All-Image  Origin-Image">
   </div>
     <!-- <router-view/> -->

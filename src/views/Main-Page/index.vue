@@ -1,11 +1,10 @@
 <!--
  * @Date: 2024-06-26 18:19:07
  * @LastEditors: likai 2806699104@qq.com
- * @LastEditTime: 2024-07-14 20:20:33
+ * @LastEditTime: 2024-07-14 20:40:50
  * @FilePath: \Study-Vue3-Ts\src\views\Main-Page\index.vue
  * @Description: 
 -->
-
 <template>
   <section style="height: 5000px;" class="px-3rem py-5rem">
     <div class='flex-column flex-align-center '>
@@ -67,7 +66,7 @@ import AlPopover from "@/components/Popover/index.vue"
 import { title } from "process";
 import { ref, onMounted, reactive } from 'vue'
 defineOptions({
-  name: 'HomePage'
+  name: 'MainPage'
 })
 </script>
 

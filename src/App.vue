@@ -1,7 +1,7 @@
 <!--
  * @Date: 2024-06-26 18:05:42
  * @LastEditors: likai 2806699104@qq.com
- * @LastEditTime: 2024-07-14 15:35:39
+ * @LastEditTime: 2024-07-14 20:17:40
  * @FilePath: \Study-Vue3-Ts\src\App.vue
  * @Description: Do not edit
 -->
@@ -12,16 +12,17 @@
       <TopTag class="top-tag invert-theme" />
       <TopNav class="current-theme top-nav" />
     </div>
-    <div class="main-container current-theme   main-div" id="outer">
-      <!-- 路由 -->
-      <RouterView v-slot='{ Component }' class='路由组件 占满 component-container ' id="inner" >
-        <transition name='fade'>
-          <KeepAlive>
-            <component :is="Component"></component>
-          </KeepAlive>
-        </transition>
-      </RouterView>
-    </div>
+    <AlProgressBar class="main-container current-theme   main-div" :id="'scrollable-container'" :color='"yellowgreen"'>
+      <template #content>
+        <RouterView v-slot='{ Component }' class='路由组件 占满 component-container'>
+          <transition name='fade'>
+            <KeepAlive>
+              <component :is="Component"></component>
+            </KeepAlive>
+          </transition>
+        </RouterView>
+      </template>
+    </AlProgressBar>
     <BottomTag class="bottom-tag bottom-div" />
   </div>
 </template>
@@ -36,12 +37,13 @@ import { MyRouteRecord } from "@/router/routesType";
 import TopTag from '@/components/TopTag/index.vue'
 import TopNav from '@/components/TopNav/index.vue'
 import BottomTag from '@/components/BottomTag/index.vue'
+import AlProgressBar from '@/components/AlProgressBar/index.vue'
 import { ref, reactive, PropType, onMounted, computed } from "vue"
 
 onMounted(() => {
- 
+
 });
-  
+
 
 
 </script>
@@ -53,54 +55,50 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
 }
-.container{
+
+.container {
   position: relative;
   overflow: auto;
 }
 
 .main-container {
   border-top: 2px solid yellowgreen;
-  // 
   overflow: auto;
   flex: 1;
+
   .component-container {
     // position: absolute;
     // inset: 0;
     height: 100%;
   }
+
   position: relative;
 }
-.main-container::before{
-  content: '';
-  background-color: yellowgreen;
-  height: 2px;
-  position: absolute;
-  width: 100%;
-  top:0px;
-  animation: scale 3s  linear; //infinite
-  animation-timeline: scroll(root);
-  transform-origin: 0% 50%;
-}
+
+
+
 
 @keyframes scale {
-  0%{
+  0% {
     transform: scaleX(0);
   }
-  100%{
+
+  100% {
     transform: scaleX(1);
   }
 }
 
-.bottom-tag{
-    height:20px;
-    opacity: 0.3;
-    // background-color: #cfe7bb;
-      position: sticky;
-      bottom:0;
-      cursor: pointer;
+.bottom-tag {
+  height: 20px;
+  opacity: 0.3;
+  // background-color: #cfe7bb;
+  position: sticky;
+  bottom: 0;
+  cursor: pointer;
 }
 
-.top-tag, .main-div {
+.top-tag,
+.main-div {
   transition: height 0.5s ease, margin-top 0.5s ease;
   /* 过渡效果 */
 }
@@ -109,17 +107,19 @@ onMounted(() => {
   position: sticky;
   top: 0;
   z-index: 9;
-  .top-tag {
-  height: 28px;
-}
-.top-nav{
-  height: 3.6rem;
-  min-height: 56px;
-  border: none;
-  // background-color:  $ic-selected;//var(--topbar-sticky-background);
-}
 
-  
+  .top-tag {
+    height: 28px;
+  }
+
+  .top-nav {
+    height: 3.6rem;
+    min-height: 56px;
+    border: none;
+    // background-color:  $ic-selected;//var(--topbar-sticky-background);
+  }
+
+
 }
 
 
@@ -137,8 +137,7 @@ onMounted(() => {
 // .container.hide-top .main-div {
 //   margin-top: 0;
 //   /* 填补上面的空白 */
-// }
-</style>
+// }</style>
 
 <style lang="scss">
 #demo-app {

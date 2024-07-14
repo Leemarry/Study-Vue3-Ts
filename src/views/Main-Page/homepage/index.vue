@@ -1,13 +1,13 @@
 <!--
  * @Date: 2024-06-26 18:19:07
  * @LastEditors: likai 2806699104@qq.com
- * @LastEditTime: 2024-07-14 14:33:21
+ * @LastEditTime: 2024-07-14 16:30:39
  * @FilePath: \Study-Vue3-Ts\src\views\Main-Page\homepage\index.vue
  * @Description: 
 -->
 
 <template>
-  <div class="inner" style="height: 5000px;">
+  <div class="scrollable-content" style="height: 5000px;">
     1
   </div>
 
@@ -81,10 +81,9 @@ function handleScroll() {
 }
 
 onMounted(() => {
-  // 确保在DOM挂载后能够正确获取scroller的引用  
-  nextTick(() => {
-    handleScroll(); // 初始化时调用一次以设置正确的startIndex  
-  });
+
+
+  
 })
 
 </script>

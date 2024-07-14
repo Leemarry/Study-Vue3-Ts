@@ -1,7 +1,7 @@
 <!--
  * @Date: 2024-06-26 18:19:07
  * @LastEditors: likai 2806699104@qq.com
- * @LastEditTime: 2024-07-13 12:18:34
+ * @LastEditTime: 2024-07-14 20:20:33
  * @FilePath: \Study-Vue3-Ts\src\views\Main-Page\index.vue
  * @Description: 
 -->
@@ -66,6 +66,9 @@
 import AlPopover from "@/components/Popover/index.vue"
 import { title } from "process";
 import { ref, onMounted, reactive } from 'vue'
+defineOptions({
+  name: 'HomePage'
+})
 </script>
 
 

@@ -2,7 +2,7 @@
 /*
  * @Date: 2024-06-26 18:09:52
  * @LastEditors: likai 2806699104@qq.com
- * @LastEditTime: 2024-07-04 19:50:18
+ * @LastEditTime: 2024-07-14 12:02:45
  * @FilePath: \Study-Vue3-Ts\src\router\index.ts
  * @Description: Do not edit
  */
@@ -85,7 +85,7 @@ const routeArr:RouteRecordRaw[] = [
 
 // 使用扩展运算符合并数组  
 const mergedRoutes = [...bolgRouter, ...mainRoutes];  
-console.log('BolgRouter',bolgRouter,mainRoutes,mergedRoutes);
+// console.log('BolgRouter',bolgRouter,mainRoutes,mergedRoutes);
  const router = createRouter({
   history: createWebHistory(),
   routes:mergedRoutes , //mainRoutes 再次使用类型断言，如果你需要完全匹配 Vue Router 的类型定义  

@@ -265,11 +265,13 @@
 $themes: (
     highlight: (background-color: #ffffff,
         color: #000000,
-        border-bottom: 1px solid var(--p-slate-200)),
+        border-top: 1px solid var(--p-slate-200)
+        ),
     dark: (background-color: #000000,
         color: white,
         // font-size: 16px,
-        border-bottom: 1px solid var(--p-zinc-700)),
+        border-top: 1px solid var(--p-zinc-700)
+        ),
     Custom: (background-color: var(--custom-bg-color, #ddd),
         /* 默认值 */
         color: var(--custom-text-color, #333)
@@ -296,6 +298,7 @@ $hoverThemes: (
         @each $property, $value in $theme-map {
             #{$property}: $value;
         }
+        border:none
     }
 }
 
@@ -315,7 +318,7 @@ $hoverThemes: (
             @each $property, $value in $theme-map {
                 #{$property}: $value;
             }
-
+            border: none;
             filter: invert( $applyInvert );
         }
     }
@@ -359,6 +362,7 @@ li {
 // 用于样式倒置
 .invert-theme {
     @include useInvertTheme(100%);
+    border: none;
     // @include useHoverTheme($applyInvertToCustom: false); // 实际上，这将是默认值，因此可以省略  
 }
 .invert-theme-10 {
@@ -366,13 +370,10 @@ li {
     // @include useHoverTheme($applyInvertToCustom: false); // 实际上，这将是默认值，因此可以省略  
 }
 
-.crrent-theme {
+.current-theme {
     @include useTheme();
 }
 
-.main-container {
-    @include useTheme();
-}
  //#region 主题 组件穿透样式
  // AlPopover组件
  .al-popover .al-popover-tooltip .al-tooltip-arrow {

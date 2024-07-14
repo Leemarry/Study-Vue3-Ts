@@ -8,14 +8,52 @@
       </div>
     </div>
 
-
     <div class="flex-row flex-align-center">
-      <li v-for="(icon, index) in icons" :key=index class="flex-row flex-align-center flex-justify-center gap">
-        <i class=" iconfont" :class="icon.icon" style="font-size: 14px;"></i>
+      <li class="flex-row flex-align-center flex-justify-center li-con">
+        <input type="text" class="al-input">
+        <i class=" iconfont icon-sousuo1" style="font-size: 14px;" @click="openColorSelector"></i>
       </li>
       <li class="flex-row flex-align-center flex-justify-center gap">
+        <i class=" iconfont icon-maoyan" style="font-size: 14px;" @click="openColorSelector"></i>
+      </li>
+      <li class="flex-row flex-align-center flex-justify-center gap">
+        <i class=" iconfont icon-GitHub" style="font-size: 14px;"
+          @click="openLinkByBlank('https://github.com/Leemarry')"></i>
+      </li>
+
+
+      <AlPopover  :title="''"  :minWidth='200' >  
+      <!-- <template #title>  
+        <div>标题</div>  
+      </template>   -->
+      <template #content >
+        <li class="flex-row flex-align-center flex-justify-center gap">
         <i class=" iconfont icon-a-huaban2fuben9" style="font-size: 14px;" @click="openColorSelector"></i>
       </li>
+      </template>
+
+        <div class="solt-panel flex-column gap">   
+          <div class="slot-content ">
+            <div class="panel-title">Primary</div>
+          <div class="panel-content flex-row gap05 flex-wrap flex-justify-between">
+            <div class="color-btn" v-for="(color,index) in colorMap" :style="{backgroundColor:color.backgroundColor}" :title="index" :key="index" @click="switchColor(color,$event)" >
+            </div>
+          </div>
+          </div>
+          <div class="slot-content ">
+            <div class="panel-title">Primary</div>
+          <div class="panel-content flex-row gap05 flex-wrap flex-justify-start">
+            <input type="color">
+            <input type="color">
+          </div>
+          </div>
+
+      
+      
+        
+        </div>  
+
+    </AlPopover> 
       <li class="flex-row flex-align-center flex-justify-center gap">
         <i v-if="currentTheme === 'highlight'" class=" iconfont icon-sun" style="font-size: 14px;"
           @click="changeDark"></i>
@@ -35,6 +73,7 @@ import { ref, reactive, PropType, onMounted, computed } from "vue"
 import { useRouter } from "vue-router";
 import mainRoutes from "@/router/mainRouter.ts"
 import { MyRouteRecord } from "@/router/routesType";
+import AlPopover from "@/components/Popover/index.vue"
 const sortRouting = mainRoutes.sort((a, b) => a.meta.menuOrder - b.meta.menuOrder)
 const router = useRouter();
 const goto = (route: MyRouteRecord) => {
@@ -42,19 +81,60 @@ const goto = (route: MyRouteRecord) => {
   router.push(route.path) //  router.push('/Blog')
 }
 
-const icons = [{
-  icon: 'icon-sousuo1',
-  title: '搜索'
-},
-{
-  icon: 'icon-maoyan',
-  title: '猫眼'
-},
-{
-  icon: 'icon-GitHub',
-  title: 'GitHub'
-}
-]
+const colorMap= {
+  'noir':{
+   backgroundColor:'#415B61',
+    color:'#000'
+  },
+  'green':{
+    backgroundColor:'#10b981',
+    color:'#000'
+  },
+  'lime':{
+    backgroundColor:'#Ef55ff',
+    color:'#fff'
+  },
+  'orange':{
+    backgroundColor:'#000',
+    color:'#fff'
+  },
+  'noirs':{
+   backgroundColor:'#415B61',
+    color:'#000'
+  },
+  'greens':{
+    backgroundColor:'#10b981',
+    color:'#000'
+  },
+  'limes':{
+    backgroundColor:'#Ef55ff',
+    color:'#fff'
+  },
+  'oranges':{
+    backgroundColor:'#000',
+    color:'#fff'
+  },
+  'noira':{
+   backgroundColor:'#415B61',
+    color:'#000'
+  },
+  'greena':{
+    backgroundColor:'#10b981',
+    color:'#000'
+  },
+  'limea':{
+    backgroundColor:'#Ef55ff',
+    color:'#fff'
+  },
+  'orangea':{
+    backgroundColor:'#000',
+    color:'#fff'
+  }
+  }
+  
+
+
+
 
 const currentTheme = ref(localStorage.getItem('theme') === 'dark' ? 'dark' : 'highlight')
 
@@ -65,6 +145,12 @@ function changehighlight() {
 function changeDark() {
   document.documentElement.setAttribute('theme', 'dark');
   currentTheme.value = 'dark'
+}
+
+const switchColor =(color:any,e:MouseEvent)=>{
+  console.log('switchColor',color,e);
+  const el = e.target as HTMLElement
+  el.style.outlineColor= color.backgroundColor  
 }
 
 const openColorSelector = () => {
@@ -169,7 +255,9 @@ const getOsColor = (() => {
 
 
 
-
+const openLinkByBlank = (src: string) => {
+  window.open(src, '_blank')
+}
 
 
 onMounted(() => {
@@ -203,5 +291,62 @@ onMounted(() => {
   &>div {
     cursor: pointer;
   }
+}
+
+.li-con {
+  // width 动画
+  width: 28px;
+  transition: width 0.3s ease-in-out;
+
+  .al-input {
+    border: none;
+    outline-style: none;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    /* 确保padding和border不会增加额外宽度 */
+    min-width: 0;
+    /* 允许input收缩到更小 */
+    // width: 100%;
+    /* 如果需要，可以在这里设置宽度，但在这个flex布局中可能不是必需的 */
+    // flex: 1;
+    margin: 0 0 0 8px; /* 为i元素留出空间，防止被input覆盖 */  
+    flex: 1 1 auto; /* flex-grow, flex-shrink, flex-basis */  
+  }
+
+  i {
+    font-size: 14px;
+    margin: 0 8px 0 0; /* 为i元素留出空间，防止被input覆盖 */  
+  }
+
+  &:hover {
+    width: 150px;
+    i{
+      color:aqua
+  }
+}
+
+}
+/**自定义颜色面版 */
+.solt-panel{
+  .panel-title{
+    margin: 0px 0px .5rem 0px;
+
+  }
+  .panel-content{
+    .color-btn{
+      border-radius: 50%;
+      cursor: pointer;
+      height: 1.25rem;
+      outline-color:transparent;
+      outline-offset: 1px;
+      outline-style: solid;
+      outline-width: 2px;
+      padding: 0px;
+      width: 1.25rem;;
+    }
+
+  }
+
 }
 </style>

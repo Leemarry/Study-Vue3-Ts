@@ -1,14 +1,15 @@
 <!--
  * @Date: 2024-06-26 18:19:07
  * @LastEditors: likai 2806699104@qq.com
- * @LastEditTime: 2024-07-14 20:41:17
+ * @LastEditTime: 2024-07-15 18:47:30
  * @FilePath: \Study-Vue3-Ts\src\views\Main-Page\homepage\index.vue
  * @Description: 
 -->
 
 <template>
   <div class="scrollable-content" style="height: 5000px;">
-    1
+   <div v-hightlight:{a:1,b:2}="'yellow'">appp</div>
+    <AlSvgIcon name="lang" />
   </div>
 
   <!-- <div>

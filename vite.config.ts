@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-06-26 18:05:42
  * @LastEditors: likai 2806699104@qq.com
- * @LastEditTime: 2024-06-28 17:24:30
+ * @LastEditTime: 2024-07-15 18:18:38
  * @FilePath: \Study-Vue3-Ts\vite.config.ts
  * @Description: Do not edit
  */
@@ -10,13 +10,14 @@ import vue from '@vitejs/plugin-vue'
 import cesium from 'vite-plugin-cesium'
 import path from 'path' // 这个语句是将整个 path 模块作为默认导出引入，因此在内部文件中可以直接使用 path 对象的方法和属性，例如：
 
-
+import { svgBuilder } from './src/components/AlSvgIcon/svgBuilder.js' 
 const resolve = (dir:string)=>path.resolve(__dirname,'.',dir)
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue(),
     cesium(), // 使用cesium插件 npm uninstall
+    svgBuilder('./src/assets/icon/icons/') // svg图标批量引入
   ],
   server: {
     open: true,

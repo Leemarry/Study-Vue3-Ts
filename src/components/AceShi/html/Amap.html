@@ -1,0 +1,37 @@
+<!--
+ * @Date: 2024-07-15 17:43:45
+ * @LastEditors: likai 2806699104@qq.com
+ * @FilePath: \Study-Vue3-Ts\src\components\AceShi\html\Amap.html
+ * @Description: Do not ed
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <style>
+    html , body{
+        height: 100vh;
+        width: 100vw;
+    }
+    #map {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+  <body>
+    <div id="map" class="map"></div>
+    <script type="module" src="/src/main.js"></script>
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=2.0&key=ad0de80bad2745055aaac60e7f6343a1"></script>
+  </body>
+</html>
+<script>
+const map = new AMap.Map('map', {
+    resizeEnable: true,
+    zoom: 7,
+    center: [114.426986, 30.436675]
+  })
+</script>

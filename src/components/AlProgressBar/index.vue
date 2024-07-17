@@ -61,21 +61,6 @@ export default {
 
 <style lang='scss' scoped>
 
-// 滚动条隐藏 添加 demo
-.al-hide-scrollbar::-webkit-scrollbar {
-    display: none;
-    /* Chrome Safari */
- }
- 
- .al-hide-scrollbar {
-    scrollbar-width: none;
-    /* firefox */
-    -ms-overflow-style: none;
-    /* IE 10+ */
-    overflow-x: hidden;
-    overflow-y: auto;
-    scroll-snap-type: y mandatory;
- }
  .al-progress-bar{
     --progressbar: 0.01;
  }

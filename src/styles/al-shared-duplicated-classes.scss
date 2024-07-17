@@ -68,14 +68,13 @@ body {
    @include hover-color(#40a9ff); 
 }
 
-
-// 滚动条隐藏 添加 demo
-.demo::-webkit-scrollbar {
+// 滚动条隐藏 添加 
+.al-hide-scrollbar::-webkit-scrollbar {
    display: none;
    /* Chrome Safari */
 }
 
-.demo {
+.al-hide-scrollbar {
    scrollbar-width: none;
    /* firefox */
    -ms-overflow-style: none;
@@ -83,25 +82,66 @@ body {
    overflow-x: hidden;
    overflow-y: auto;
    scroll-snap-type: y mandatory;
-
-   &>div {
-      scroll-snap-align: start;
-   }
 }
+
+.al-mask{
+   display: none;
+   position: fixed;
+   left: 0;
+   top: 0;
+   width: 100%;
+   height: 100%;
+   background-color: rgba(0,0,0,0.3);
+   z-index: 2000;
+}
+
+/*al-icon**/
+#al-icon-content{
+   list-style: none;
+   border: none;
+   border-radius: 0px;
+   mix-blend-mode: hard-light; /* 与父元素的颜色混合 */  
+   background-color: rgba(0,0,0,0);
+   transition: background-color 0.3s;
+   font-size: 14px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   overflow: hidden;
+   padding: 10px 8px;
+   margin-inline-end: 12px;
+
+   i{
+      color: #f7f9fa;
+      cursor: pointer;
+      overflow: hidden;
+      font-size: 18px;
+   }
+   &:hover{
+      background-color: rgba(0,0,0,0.1);
+      filter: invert(10%);
+      i{
+         filter: invert(20%);
+      }
+   }
+
+}
+
+
+
 
 .box-shadow {
    box-shadow: 0px 0px 10px 1px #eeece1
 }
 
-::v-deep(.ant-spin-nested-loading) {
-   // height: calc(100% - 60px);
-   flex: 1;
-   overflow: hidden;
-}
+// al-button
+//#region al-button
+.al-button {
+   display: inline-block;
 
-::v-deep(.ant-spin-nested-loading .ant-spin-container) {
-   height: 100%;
 }
+// .al-button[circle]
+//#endregion
 
 //#region
 
@@ -206,9 +246,7 @@ body {
 // padding 
 // #region
 
-.pad-10 {
-   padding: 10px;
-}
+
 
 // #endregion
 // 
@@ -228,10 +266,5 @@ body {
    transition: opacity 0.5s ease;
 }
 
-:deep(div#__vconsole) {
-   display: none;
-   &.show {
-       display: block;
-   }
-}
+
 

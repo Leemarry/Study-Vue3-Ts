@@ -1,7 +1,7 @@
 <!--
  * @Date: 2024-06-26 18:19:07
  * @LastEditors: likai 2806699104@qq.com
- * @LastEditTime: 2024-07-15 18:47:30
+ * @LastEditTime: 2024-07-17 21:59:31
  * @FilePath: \Study-Vue3-Ts\src\views\Main-Page\homepage\index.vue
  * @Description: 
 -->
@@ -10,6 +10,10 @@
   <div class="scrollable-content" style="height: 5000px;">
    <div v-hightlight:{a:1,b:2}="'yellow'">appp</div>
     <AlSvgIcon name="lang" />
+    <button > 图片张开</button>
+    <AlImagePreview :visible="imageVisible"></AlImagePreview>
+    <al-button type="primary" round ghost>主要按钮</al-button>  
+    <al-button icon="el-icon-search" circle></al-button> 
   </div>
 
   <!-- <div>
@@ -36,9 +40,14 @@
 import { computed, onMounted, ref, nextTick } from 'vue'
 import { useDefer } from '@/utils/loading/userDefer'
 import AlVirtualList from '@/components/Al-Virtual-Scroller/index.vue'
+import AlImagePreview from '@/components/Al-Image-Preview/index.vue'
+import AlButton from '@/components/Al-Button/index.vue'
 defineOptions({
   name: 'HomePage'
 })
+
+const imageVisible = ref(false)
+
 const items = ref(Array.from({ length: 1000 }, (_, index) => ({
   id: index,
   text: `Item ${index + 1}`,

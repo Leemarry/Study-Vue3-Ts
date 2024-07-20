@@ -134,12 +134,46 @@ body {
    box-shadow: 0px 0px 10px 1px #eeece1
 }
 
-// al-button
+// al-button 尺寸--> 形状
 //#region al-button
-.al-button {
-   display: inline-block;
+.al-button {  
+   /* 基础样式 */  
+   border: none;  
+   background-color: #f0f0f0;  
+   color: rgba(0,0,0,0.65);
+   cursor: pointer;  
+   height: 32px;
+   padding: 4px 15px; 
+   font-size: 14px; 
+ } 
+ .al-button--large { 
+   height: 40px;
+   padding: 6.5px 15px;
+   font-size: 16px;
+ } 
 
-}
+ .al-button--small {
+   font-size: 12px;
+   padding: 4px 10px;
+ }
+ .al-button--circle {  
+   width: 32px;  
+   height: 32px;  
+   padding: 0;  
+   border-radius: 50%; /* 圆形 */  
+ } 
+ .al-button--circle.al-button--small {  
+   width: 32px;  
+   height: 32px;  
+   padding: 0;  
+   border-radius: 50%; /* 圆形 */  
+ } 
+
+
+ .al-button--primary { 
+
+ }
+
 // .al-button[circle]
 //#endregion
 

@@ -1,7 +1,7 @@
 <!--
  * @Date: 2024-06-28 13:09:21
  * @LastEditors: likai 2806699104@qq.com
- * @LastEditTime: 2024-06-28 13:29:18
+ * @LastEditTime: 2024-07-20 09:56:13
  * @FilePath: \Study-Vue3-Ts\src\page\mainMenu\RouterCeShi.vue
  * @Description: Do not edit
 -->
@@ -27,14 +27,14 @@
   <script setup lang="ts">
   import { onMounted, computed } from "vue"
   import mainRoutes from "@/router/mainRouter.ts"
-  import { useRoute, useRouter } from "vue-router";
+  import {  useRouter } from "vue-router";
   import { MyRouteRecord } from "@/router/routesType";
   
   
-  const sortRouting = mainRoutes.sort((a,b)=>a.meta.menuOrder - b.meta.menuOrder)
+  // const sortRouting = mainRoutes.sort((a,b)=>a.meta.menuOrder - b.meta.menuOrder)
   const router = useRouter();
   
-  const props = defineProps({
+defineProps({
     props1: {
       type: Boolean,
       default: true,
@@ -46,21 +46,17 @@
     prop3: String,
   })
   
-  const computed1 = computed(() => {
-    return null;
-  
-  })
-  
-  const goto = (route:MyRouteRecord) => {
-    console.log('switchRoute', route);
-    router.push(route.path) //  router.push('/Blog')
-  }
-  const reback = () => {
-    router.go(-1)
-  }
-  const goback=(num:number)=>{
-    router.back()
-  }
+
+  // const goto = (route:MyRouteRecord) => {
+  //   console.log('switchRoute', route);
+  //   router.push(route.path) //  router.push('/Blog')
+  // }
+  // const reback = () => {
+  //   router.go(-1)
+  // }
+  // const goback=(num:number)=>{
+  //   router.back()
+  // }
   onMounted(() => {
   
   })

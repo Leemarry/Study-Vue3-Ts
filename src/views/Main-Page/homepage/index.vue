@@ -1,7 +1,7 @@
 <!--
  * @Date: 2024-06-26 18:19:07
  * @LastEditors: likai 2806699104@qq.com
- * @LastEditTime: 2024-07-17 21:59:31
+ * @LastEditTime: 2024-07-20 09:38:34
  * @FilePath: \Study-Vue3-Ts\src\views\Main-Page\homepage\index.vue
  * @Description: 
 -->
@@ -13,7 +13,7 @@
     <button > 图片张开</button>
     <AlImagePreview :visible="imageVisible"></AlImagePreview>
     <al-button type="primary" round ghost>主要按钮</al-button>  
-    <al-button icon="el-icon-search" circle></al-button> 
+    <al-button icon="el-icon-search"  circle :size="'small'">.</al-button> 
   </div>
 
   <!-- <div>

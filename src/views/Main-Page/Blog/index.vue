@@ -1,7 +1,7 @@
 <!--
  * @Date: 2024-06-26 18:19:07
  * @LastEditors: likai 2806699104@qq.com
- * @LastEditTime: 2024-07-14 20:50:01
+ * @LastEditTime: 2024-07-20 10:08:13
  * @FilePath: \Study-Vue3-Ts\src\views\Main-Page\Blog\index.vue
  * @Description: 
 -->
@@ -12,7 +12,7 @@
     博客
   </div>
 <div>
-  <a-button type="primary" @click='goto'>最外层</a-button>
+  <button  @click='goto'>最外层</button>
   <button @click='goBlog'>前往博客</button>
 
   <div class="Al-Image">

@@ -1,7 +1,7 @@
 <!--
  * @Date: 2024-06-27 19:42:14
  * @LastEditors: likai 2806699104@qq.com
- * @LastEditTime: 2024-06-28 13:54:03
+ * @LastEditTime: 2024-07-20 10:08:47
  * @FilePath: \Study-Vue3-Ts\src\components\Home.vue
  * @Description: Do not edit
 -->
@@ -9,7 +9,7 @@
     <div class="home">
         这是home，按钮到about
         <button type="button" @click="count++">count is {{ count }}</button>
-        <a-input v-model:value="value" placeholder="Basic usage" />
+        <input v-model="value" placeholder="Basic usage" />
         <button @click='goto'>/about</button>
         <!-- <div>
             <router-view />

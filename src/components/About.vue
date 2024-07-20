@@ -1,7 +1,7 @@
 <!--
  * @Date: 2024-06-27 19:40:59
  * @LastEditors: likai 2806699104@qq.com
- * @LastEditTime: 2024-06-28 13:33:14
+ * @LastEditTime: 2024-07-20 10:09:46
  * @FilePath: \Study-Vue3-Ts\src\components\About.vue
  * @Description: Do not edi
 -->
@@ -10,13 +10,12 @@
     <div class="about">
         <h2>About 关于我们 </h2>
         <button type="button" @click="count++">count is {{ count }}</button>
-        <a-input v-model:value="value" placeholder="Basic usage" />
+        <input v-model="value" placeholder="Basic usage" />
     </div>
 </template>
 
 <script setup lang="ts" >
-import { log } from 'console';
-import {ref,defineComponent,onMounted,onUnmounted,onActivated,onDeactivated} from 'vue'
+import {ref,onMounted,onUnmounted,onActivated,onDeactivated} from 'vue'
 
 
 

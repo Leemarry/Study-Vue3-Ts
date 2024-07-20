@@ -69,7 +69,7 @@
 </template>
 <!-- setup语法糖-defineProps是编译器宏，无需引入 -->
 <script setup lang="ts">
-import { ref, reactive, PropType, onMounted, computed } from "vue"
+import { ref, onMounted } from "vue"
 import { useRouter } from "vue-router";
 import mainRoutes from "@/router/mainRouter.ts"
 import { MyRouteRecord } from "@/router/routesType";
@@ -177,7 +177,7 @@ const openColorSelector = () => {
 //   // ...
 // });
 // }
-let originalGetOsColor: (() => void) | null = null;
+// let originalGetOsColor: (() => void) | null = null;
 
 // 这个返回的函数就是我们的惰性函数  
 

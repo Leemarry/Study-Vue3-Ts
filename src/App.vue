@@ -1,7 +1,7 @@
 <!--
  * @Date: 2024-06-26 18:05:42
  * @LastEditors: likai 2806699104@qq.com
- * @LastEditTime: 2024-07-14 20:17:40
+ * @LastEditTime: 2024-07-20 09:57:35
  * @FilePath: \Study-Vue3-Ts\src\App.vue
  * @Description: Do not edit
 -->
@@ -28,17 +28,11 @@
 </template>
 <script setup lang="ts">
 // import HomeMenu from './page/mainMenu/HomeMenu.vue'
-import HomeMenu from '@/page/mainMenu/HomeMenu.vue'
-import CeShi from '@/page/mainMenu/CeShi.vue'
-import RouterCeShi from '@/page/mainMenu/RouterCeShi.vue'
-import { useRouter } from "vue-router";
-import mainRoutes from "@/router/mainRouter.ts"
-import { MyRouteRecord } from "@/router/routesType";
 import TopTag from '@/components/TopTag/index.vue'
 import TopNav from '@/components/TopNav/index.vue'
 import BottomTag from '@/components/BottomTag/index.vue'
 import AlProgressBar from '@/components/AlProgressBar/index.vue'
-import { ref, reactive, PropType, onMounted, computed } from "vue"
+import { onMounted } from "vue"
 
 onMounted(() => {
 

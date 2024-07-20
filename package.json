@@ -6,10 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
+    "smp": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
-    "ant-design-vue": "^4.2.3",
     "cesium": "1.99",
     "vite-plugin-cesium": "^1.2.22",
     "vue": "^3.4.29",

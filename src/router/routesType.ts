@@ -1,6 +1,12 @@
+/*
+ * @Date: 2024-07-15 08:45:43
+ * @LastEditors: likai 2806699104@qq.com
+ * @FilePath: \Study-Vue3-Ts\src\router\routesType.ts
+ * @Description: Do not edit
+ */
 
 
-import { title } from 'process';
+
 import { RouteMeta,RouteRecordRaw} from 'vue-router'
 
 

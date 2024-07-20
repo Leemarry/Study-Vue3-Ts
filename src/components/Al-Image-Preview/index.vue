@@ -1,3 +1,9 @@
+<!--
+ * @Date: 2024-07-18 08:33:31
+ * @LastEditors: likai 2806699104@qq.com
+ * @FilePath: \Study-Vue3-Ts\src\components\Al-Image-Preview\index.vue
+ * @Description: Do not edit
+-->
 <template>
 <div class='al-mask al-image-preview' :style='{display: visible ? "flex" : "none"}'>
     <!-- 图片处理动作 -->
@@ -76,8 +82,8 @@ defineProps({
         position: absolute;
         top: 5%;
         right: 5%;
-        width: 3rem;
-    height: 3rem;
+        width: 1rem;
+    height: 1rem;
         padding: 1rem;
         font-size: 1.2rem;
         border-radius: 50%;

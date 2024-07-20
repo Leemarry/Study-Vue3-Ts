@@ -70,9 +70,9 @@ const showData = computed(() => {
 //   return Math.min(startIndex.value + visibleCount, items.value.length - 1);  
 // });
 //
-const conHeight = computed(() => {
-    return prop.size * prop.showNumber
-})
+// const conHeight = computed(() => {
+//     return prop.size * prop.showNumber
+// })
 //
 const listTop = computed(() => {
     return prop.size * Math.min(startIndex.value ,prop.items.length)

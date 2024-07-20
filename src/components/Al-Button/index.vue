@@ -1,13 +1,19 @@
 <template>
+  <!-- 如果有 circle 才在button 添加 circle 属性 button 添加 circle 属性 <button circle ></button> -->
+
   <button  
     :class="[  
       'al-button',  
       type && `al-button--${type}`,  
       round && 'al-button--round',  
       circle && 'al-button--circle' ,
-      ghost && 'al-button--ghost' // 添加 ghost 类名  
+      ghost && 'al-button--ghost' ,
+      size && `al-button--${size}`
     ]"  
+
   >  
+  <!-- :circle='circle'  -->
+
     <slot></slot>  
     <i v-if="icon" :class="icon" class="iconfont"></i>  
   </button>  
@@ -22,7 +28,11 @@ defineProps({
   type: {  
     type: String,  
     default: ''  
-  },  
+  }, 
+  size:{
+    type: String,  
+    default: 'default' 
+  } ,
   round: {  
     type: Boolean,  
     default: false  
@@ -45,13 +55,7 @@ defineProps({
 
 
 <style lang='scss' scoped>
-.al-button {  
-  /* 基础样式 */  
-  padding: 8px 16px;  
-  border: none;  
-  background-color: #f0f0f0;  
-  cursor: pointer;  
-}  
+
   
 .al-button--primary {  
   background-color: #42b983;  
@@ -61,14 +65,6 @@ defineProps({
 .al-button--round {  
   border-radius: 50px; /* 圆角 */  
 }  
-  
-.al-button--circle {  
-  width: 32px;  
-  height: 32px;  
-  padding: 0;  
-  border-radius: 50%; /* 圆形 */  
-}  
-  
 .al-button--ghost {  
   background-color: transparent; /* 透明背景 */  
   border: 1px solid #ccc; /* 示例边框颜色，可以根据需要调整 */  

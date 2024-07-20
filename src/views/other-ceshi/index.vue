@@ -1,15 +1,15 @@
 <!--
  * @Date: 2024-06-26 18:19:07
  * @LastEditors: likai 2806699104@qq.com
- * @LastEditTime: 2024-06-27 13:23:04
- * @FilePath: \Study-Vue3-Ts\src\views\page-main\index.vue
+ * @LastEditTime: 2024-07-20 10:08:25
+ * @FilePath: \Study-Vue3-Ts\src\views\other-ceshi\index.vue
  * @Description: 
 -->
 
 <template>
     <h1>{{ msg }}</h1>
-    <a-button>Add</a-button> 
-    <a-button type="primary">main</a-button>
+    <button>Add</button> 
+    <button>main</button>
     <div :id="MapContainerId" class="cesiumViewer"></div>
     <!-- <img src="/image/14.jpg" alt="" srcset=""> -->
   </template>

@@ -1,7 +1,7 @@
 <!--
  * @Date: 2024-06-27 13:53:29
  * @LastEditors: likai 2806699104@qq.com
- * @LastEditTime: 2024-07-03 11:18:02
+ * @LastEditTime: 2024-07-20 09:55:03
  * @FilePath: \Study-Vue3-Ts\src\page\mainMenu\HomeMenu.vue
  * @Description:homeMenu
 -->
@@ -45,7 +45,7 @@
 <script setup lang="ts">
 import { onMounted, computed, ref } from "vue"
 import mainRoutes from "@/router/mainRouter.ts"
-import { useRoute, useRouter } from "vue-router";
+import {  useRouter } from "vue-router";
 import { MyRouteRecord } from "@/router/routesType";
 const showTag = ref<boolean>(localStorage.getItem('showTag') ? false : true)
 const closeTag = () => {
@@ -56,7 +56,7 @@ const closeTag = () => {
 const sortRouting = mainRoutes.sort((a, b) => a.meta.menuOrder - b.meta.menuOrder)
 const router = useRouter();
 
-const props = defineProps({
+defineProps({
   props1: {
     type: Boolean,
     default: true,
@@ -68,19 +68,14 @@ const props = defineProps({
   prop3: String,
 })
 
-const computed1 = computed(() => {
-  return null;
 
-})
 
 const goto = (route: MyRouteRecord) => {
   console.log('switchRoute', router, route.path);
   router.push(route.path) //  router.push('/Blog')
 }
 
-const goback = (num: number) => {
-  router.back()
-}
+
 onMounted(() => {
 
 
@@ -103,17 +98,17 @@ onMounted(() => {
   
 })
 
-// 切换主题的函数  
-function switchTheme() {  
-  // 切换theme属性的值  
-  var myDiv = document.getElementById('myDiv') as HTMLElement;  
-  var currentTheme = myDiv.getAttribute('theme');  
-  var newTheme = currentTheme === 'highlight' ? 'dark' : 'highlight';  
+// // 切换主题的函数  
+// function switchTheme() {  
+//   // 切换theme属性的值  
+//   var myDiv = document.getElementById('myDiv') as HTMLElement;  
+//   var currentTheme = myDiv.getAttribute('theme');  
+//   var newTheme = currentTheme === 'highlight' ? 'dark' : 'highlight';  
     
-  // 设置新的theme属性值并应用相应的样式  
-  myDiv.setAttribute('theme', newTheme);  
+//   // 设置新的theme属性值并应用相应的样式  
+//   myDiv.setAttribute('theme', newTheme);  
 
-}  
+// }  
 
 
 

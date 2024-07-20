@@ -1,7 +1,7 @@
 <!--
  * @Date: 2024-06-27 13:53:29
  * @LastEditors: likai 2806699104@qq.com
- * @LastEditTime: 2024-06-28 12:57:45
+ * @LastEditTime: 2024-07-20 09:56:08
  * @FilePath: \Study-Vue3-Ts\src\page\mainMenu\CeShi.vue
  * @Description:homeMenu
 -->
@@ -31,7 +31,7 @@
   
   <!-- setup语法糖-defineProps是编译器宏，无需引入 -->
   <script setup lang="ts">
-  import { onMounted, computed,ref } from "vue"
+  import { onMounted,ref } from "vue"
 
 import Home from '@/components/Home.vue'
 import About from '@/components/About.vue'

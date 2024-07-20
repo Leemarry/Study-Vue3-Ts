@@ -2,7 +2,7 @@
  * @Author: likai 2806699104@qq.com
  * @Date: 2024-07-05 19:27:12
  * @LastEditors: likai 2806699104@qq.com
- * @LastEditTime: 2024-07-07 14:45:40
+ * @LastEditTime: 2024-07-20 09:57:05
  * @FilePath: \Study-Vue3-Ts\src\components\BottomTag\index.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -14,9 +14,9 @@
 </template>
 <!-- setup语法糖-defineProps是编译器宏，无需引入 -->
 <script setup lang="ts">
-import { ref, reactive, PropType, onMounted, computed } from "vue"
+import {  onMounted } from "vue"
 
-const props = defineProps({
+defineProps({
   props1: {
     type: Boolean,
     default: true,
